@@ -19,6 +19,17 @@
       <form method="post">
         <div class="flex justify-center">
           <ul class="grid grid-cols-2 row-span-3 gap-8">
+            {% for button in buttons %}
+              {% if loop.first %}
+                <li class="col-span-2 flex justify-center -mb-4">
+                  <button name="button" value="power"
+                      class="flex rounded-full border border-[#3F4241] hover:border-[#C33E21] w-[100px] h-[100px] justify-center items-center focus:bg-[#C33E21] group">
+                    <twig:ux:icon name="power" width="184" height="184" class="fill-[#C33E21] group-focus:fill-[#ffffff]"/>
+                  </button>
+                </li>
+              {% else %}
+              {% endif %}
+            {% endfor %}
             <li class="col-span-2 flex justify-center -mb-4">
               <button name="button" value="power"
                   class="flex rounded-full border border-[#3F4241] hover:border-[#C33E21] w-[100px] h-[100px] justify-center items-center focus:bg-[#C33E21] group">
