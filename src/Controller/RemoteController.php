@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Remote\ButtonRemote;
+use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,25 +18,10 @@ final class RemoteController extends AbstractController {
 	): Response {
 		if ('POST' === $request->getMethod()) {
 			$button = $request->request->getString('button');
-			$remote->press($button);
-			switch ($button = $request->request->getString('button')) {
-				case 'power':
-					dump('Power on/off the TV');
-					break;
-				case 'channel-up':
-					dump('Change the channel up');
-					break;
-				case 'channel-down':
-					dump('Change the channel down');
-					break;
-				case 'volume-up':
-					dump('Increase the volume');
-					break;
-				case 'volume-down':
-					dump('Decrease the volume');
-					break;
-				default:
-					throw $this->createNotFoundException(sprintf('Button "%s" not found.', $button));
+			try {
+				$remote->press($button);
+			} catch (NotFoundExceptionInterface $e) {
+				throw $this->createNotFoundException(sprintf('Button "%s" not found.', $button), previous: $e);
 			}
 
 			$this->addFlash('success', sprintf('%s pressed', u($button)->replace('-', ' ')->title(allWords: true)));
