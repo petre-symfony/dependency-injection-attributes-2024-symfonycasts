@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 
 final class ButtonRemote {
 	public function __construct(
-		#[AutowireIterator(ButtonInterface::class)]
+		#[AutowireIterator(ButtonInterface::class, indexAttribute: 'keys')]
 		private iterable $buttons
 	) {
 	}
