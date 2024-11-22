@@ -21,6 +21,6 @@ final class ButtonRemote {
 	 * @return string[]
 	 */
 	public function buttons(): array{
-		dd($this->buttons->getProvidedServices());
+		return array_keys($this->buttons->getProvidedServices());
 	}
 }
