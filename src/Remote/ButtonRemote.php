@@ -21,10 +21,6 @@ final class ButtonRemote {
 	 * @return string[]
 	 */
 	public function buttons(): array{
-		$buttons = [];
-		foreach ($this->buttons as $name => $button) {
-			$buttons[] = $name;
-		}
-		return $buttons;
+		dd($this->buttons->getProvidedServices());
 	}
 }
