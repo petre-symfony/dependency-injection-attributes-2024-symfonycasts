@@ -20,7 +20,7 @@ final class ButtonRemote {
 	/**
 	 * @return string[]
 	 */
-	public function buttons(): array{
+	public function buttons(): iterable{
 		return array_keys($this->buttons->getProvidedServices());
 	}
 }
