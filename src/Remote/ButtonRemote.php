@@ -3,12 +3,13 @@
 namespace App\Remote;
 
 use App\Remote\Button\ButtonInterface;
-use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
+use Symfony\Component\DependencyInjection\Attribute\AutowireLocator;
+use Symfony\Contracts\Service\ServiceCollectionInterface;
 
 final class ButtonRemote {
 	public function __construct(
-		#[AutowireIterator(ButtonInterface::class, indexAttribute: 'keys')]
-		private iterable $buttons
+		#[AutowireLocator(ButtonInterface::class, indexAttribute: 'keys')]
+		private ServiceCollectionInterface $buttons
 	) {
 	}
 
