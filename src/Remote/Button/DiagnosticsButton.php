@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
 use Symfony\Component\DependencyInjection\Attribute\When;
 
 #[AsTaggedItem('diagnostics')]
-#[When('dev')]
+#[When('prod')]
 class DiagnosticsButton implements ButtonInterface {
 	public function press(): void {
 		dump('Press diagnostics button.');
