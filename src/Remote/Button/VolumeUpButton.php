@@ -19,7 +19,6 @@ final class VolumeUpButton implements ButtonInterface {
 		}
 
 		dump($this->parentalControls);
-		
 		dump('Change the volume up');
 	}
 }
