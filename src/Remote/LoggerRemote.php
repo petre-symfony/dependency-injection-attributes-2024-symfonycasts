@@ -8,19 +8,19 @@ use Symfony\Component\DependencyInjection\Attribute\AsDecorator;
 #[AsDecorator(ButtonRemote::class)]
 class LoggerRemote implements RemoteInterface{
 	public function __construct(
-		private LoggerInterface $buttonLogger,
+		private LoggerInterface $logger,
 		private RemoteInterface $inner
 	) {
 	}
 
 	public function press(string $name): void {
-		$this->buttonLogger->info('Pressing button {name}', [
+		$this->logger->info('Pressing button {name}', [
 			'name' => $name
 		]);
 
 		$this->inner->press($name);
 		
-		$this->buttonLogger->info('Pressed button {name}', [
+		$this->logger->info('Pressed button {name}', [
 			'name' => $name
 		]);
 	}
