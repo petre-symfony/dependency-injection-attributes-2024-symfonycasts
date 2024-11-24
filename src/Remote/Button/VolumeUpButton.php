@@ -4,7 +4,7 @@ namespace App\Remote\Button;
 
 use App\Remote\ParentalControls;
 use Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
-use Symfony\Component\DependencyInjection\Attribute\AutowireServiceClosure;
+use Symfony\Component\DependencyInjection\Attribute\AutowireCallable;
 
 #[AsTaggedItem('volume-up', priority: 20)]
 final class VolumeUpButton implements ButtonInterface {
@@ -12,7 +12,11 @@ final class VolumeUpButton implements ButtonInterface {
 	 * @param \Closure():ParentalControls $parentalControls
 	 */
 	public function __construct(
-		#[AutowireServiceClosure(ParentalControls::class)]
+		#[AutowireCallable(
+			service: ParentalControls::class,
+			method: 'volumeTooHigh',
+			lazy: true
+		)]
 		private \Closure $parentalControls
 	) {
 	}
