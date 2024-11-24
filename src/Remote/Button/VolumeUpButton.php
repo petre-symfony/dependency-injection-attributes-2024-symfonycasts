@@ -8,6 +8,9 @@ use Symfony\Component\DependencyInjection\Attribute\AutowireServiceClosure;
 
 #[AsTaggedItem('volume-up', priority: 20)]
 final class VolumeUpButton implements ButtonInterface {
+	/**
+	 * @param \Closure():ParentalControls $parentalControls
+	 */
 	public function __construct(
 		#[AutowireServiceClosure(ParentalControls::class)]
 		private \Closure $parentalControls
