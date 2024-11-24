@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\Attribute\AutowireCallable;
 #[AsTaggedItem('volume-up', priority: 20)]
 final class VolumeUpButton implements ButtonInterface {
 	/**
-	 * @param \Closure():ParentalControls $parentalControls
+	 * @param \Closure():void $parentalControls
 	 */
 	public function __construct(
 		#[AutowireCallable(
@@ -24,7 +24,7 @@ final class VolumeUpButton implements ButtonInterface {
 	public function press(): void {
 		if (true) {
 			//determine the volume is too high
-			($this->parentalControls)()->volumeTooHigh();
+			($this->parentalControls)();
 		}
 
 		dump('Change the volume up');
