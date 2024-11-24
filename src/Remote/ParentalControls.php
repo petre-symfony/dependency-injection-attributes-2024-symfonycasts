@@ -4,7 +4,7 @@ namespace App\Remote;
 
 use Symfony\Component\Mailer\MailerInterface;
 
-class ParentalControls {
+final class ParentalControls {
 	public function __construct(
 		private MailerInterface $mailer
 	) {
